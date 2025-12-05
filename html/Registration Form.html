@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <title>Registration Form</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        font-size: 15px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      form {
+        border: solid black 1px;
+        margin: auto;
+        max-width: 600px;
+        padding: 20px;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      td {
+        padding: 10px;
+      }
+
+      label {
+        font-weight: bold;
+        margin-right: 20px;
+      }
+
+      input,
+      select,
+      textarea {
+        border: 1px solid gray;
+        padding: 10px;
+        width: 100%;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin: 0 5px 0 0;
+        width: auto;
+      }
+
+      input[type="submit"] {
+        background: green;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 15px 30px;
+        width: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Registration Form</h1>
+    <form action="#" method="post">
+      <table>
+        <tr>
+          <td><label for="fullname">Full Name</label></td>
+          <td>
+            <input type="text" id="fullname" name="fullname" required />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="email">Email</label></td>
+          <td>
+            <input type="email" id="email" name="email" required />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="password">Password</label></td>
+          <td>
+            <input type="password" id="password" name="password" required />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="confirm_password">Confirm Password</label>
+          </td>
+          <td>
+            <input
+              type="password"
+              id="confirm_password"
+              name="confirm_password"
+              required
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><label>Gender</label></td>
+          <td>
+            <label
+              ><input
+                type="radio"
+                name="gender"
+                value="male"
+                required
+              />Male</label
+            >
+            <label
+              ><input type="radio" name="gender" value="female" />Female</label
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><label for="birthdate">Date of Birth</label></td>
+          <td>
+            <input type="date" id="birthdate" name="birthdate" required />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="country">Country</label></td>
+          <td>
+            <select id="country" name="country" required>
+              <option value="india">India</option>
+              <option value="japan">Japan</option>
+              <option value="russia">Russia</option>
+              <option value="usa">United States</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label>Interests</label></td>
+          <td>
+            <label
+              ><input
+                type="checkbox"
+                name="interests[]"
+                value="sports"
+              />Sports</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="interests[]"
+                value="music"
+              />Music</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="interests[]"
+                value="reading"
+              />Reading</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="interests[]"
+                value="travel"
+              />Travel</label
+            >
+          </td>
+        </tr>
+        <tr>
+          <td><label for="bio">Bio</label></td>
+          <td><textarea id="bio" name="bio" rows="4"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center">
+            <input type="submit" value="Register" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
