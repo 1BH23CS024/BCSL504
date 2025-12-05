@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <title>Time Table</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td,
+      th {
+        border: 1px solid #000;
+        padding: 10px;
+        text-align: center;
+      }
+      tfoot,
+      th {
+        background-color: lightgray;
+        font-weight: bold;
+      }
+      .lab-hours {
+        background-color: pink;
+      }
+      .elective-hours {
+        background-color: lightgreen;
+      }
+      .lunch {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="7">Class Time Table</th>
+        </tr>
+        <tr>
+          <th>Time</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>9:00 - 10:00</td>
+          <td>Math</td>
+          <td>English</td>
+          <td>Science</td>
+          <td>History</td>
+          <td>Geography</td>
+          <td rowspan="6">No Classes</td>
+        </tr>
+        <tr>
+          <td>10:00 - 11:00</td>
+          <td>Physics</td>
+          <td>Chemistry</td>
+          <td>Biology</td>
+          <td class="elective-hours">
+            <span>Computer Science</span>
+          </td>
+          <td class="elective-hours">Art</td>
+        </tr>
+        <tr>
+          <td>11:00 - 12:00</td>
+          <td class="lab-hours" colspan="2">Physics Lab</td>
+          <td class="lab-hours" colspan="2">Chemistry Lab</td>
+          <td class="lab-hours">Biology Lab</td>
+        </tr>
+        <tr>
+          <td>12:00 - 13:00</td>
+          <td class="lunch" colspan="5">Lunch Break</td>
+        </tr>
+        <tr>
+          <td>13:00 - 14:00</td>
+          <td>Literature</td>
+          <td>Math</td>
+          <td>English</td>
+          <td>Physics</td>
+          <td>Chemistry</td>
+        </tr>
+        <tr>
+          <td>14:00 - 15:00</td>
+          <td class="elective-hours">Music</td>
+          <td class="elective-hours">Drama</td>
+          <td class="lab-hours" colspan="3">Computer Lab</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="7">
+            Note: Lab hours are highlighted in pink and elective hours in green.
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
