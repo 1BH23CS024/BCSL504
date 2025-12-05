@@ -1,0 +1,153 @@
+<html>
+  <head>
+    <title>Simple Calculator</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .calculator {
+        background: black;
+        padding: 20px;
+        width: 300px;
+      }
+
+      #display {
+        background: lightblue;
+        width: 100%;
+        height: 100px;
+        font-size: 3em;
+        text-align: right;
+        margin-bottom: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      button {
+        padding: 10px;
+        font-size: 1.2em;
+        border: none;
+        background: gray;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: lightgray;
+      }
+
+      .clear {
+        background: darkred;
+      }
+
+      .clear:hover {
+        background: red;
+      }
+
+      .operator {
+        background: darkorange;
+      }
+
+      .operator:hover {
+        background: orange;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="calculator">
+      <input type="text" id="display" readonly />
+      <div class="buttons">
+        <button class="operator" onclick="o('^')">^</button>
+        <button class="operator" onclick="r()">√</button>
+        <button class="operator" onclick="o('mod')">mod</button>
+        <button class="clear" onclick="clr()">AC</button>
+        <button onclick="a('7')">7</button>
+        <button onclick="a('8')">8</button>
+        <button onclick="a('9')">9</button>
+        <button class="operator" onclick="o('/')">÷</button>
+        <button onclick="a('4')">4</button>
+        <button onclick="a('5')">5</button>
+        <button onclick="a('6')">6</button>
+        <button class="operator" onclick="o('*')">×</button>
+        <button onclick="a('1')">1</button>
+        <button onclick="a('2')">2</button>
+        <button onclick="a('3')">3</button>
+        <button class="operator" onclick="o('-')">−</button>
+        <button onclick="a('.')">.</button>
+        <button onclick="a('0')">0</button>
+        <button onclick="ans()">ANS</button>
+        <button class="operator" onclick="o('+')">+</button>
+      </div>
+    </div>
+    <script>
+      const d = document.getElementById("display");
+      let cV = "",
+        op = "",
+        pV = "";
+
+      function a(val) {
+        cV += val;
+        d.value = cV;
+      }
+      function clr() {
+        cV = op = pV = "";
+        d.value = "";
+      }
+      function o(operator) {
+        if (cV) {
+          if (pV) ans();
+          op = operator;
+          pV = cV;
+          cV = "";
+        }
+      }
+      function ans() {
+        if (pV && cV) {
+          let r,
+            prev = parseFloat(pV),
+            curr = parseFloat(cV);
+          switch (op) {
+            case "+":
+              r = prev + curr;
+              break;
+            case "-":
+              r = prev - curr;
+              break;
+            case "*":
+              r = prev * curr;
+              break;
+            case "/":
+              r = prev / curr;
+              break;
+            case "mod":
+              r = prev % curr;
+              break;
+            case "^":
+              r = Math.pow(prev, curr);
+              break;
+          }
+          d.value = r;
+          pV = r.toString();
+          cV = op = "";
+        }
+      }
+      function r() {
+        if (cV) {
+          let res = Math.sqrt(parseFloat(cV));
+          d.value = res;
+          cV = res.toString();
+        }
+      }
+    </script>
+  </body>
+</html>

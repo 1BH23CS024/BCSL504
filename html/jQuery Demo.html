@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>jQuery Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#appendButton").click(function () {
+          $("#existingParagraph").append(" This content is appended.");
+          $("#existingList").append("<li>Appended item</li>");
+        });
+
+        $("#animateButton").click(function () {
+          $("#animateBox").animate(
+            {
+              width: "200px",
+              height: "200px",
+            },
+            1000
+          );
+        });
+
+        $("#colorChangeButton").click(function () {
+          $("#colorBox").animate(
+            {
+              opacity: 0.5,
+            },
+            1000
+          );
+        });
+      });
+    </script>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 100px;
+      }
+
+      #animateBox,
+      #colorBox {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        margin: 20px 0;
+      }
+
+      button {
+        background-color: green;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        margin-left: 20px;
+        padding: 10px;
+      }
+      button:hover {
+        background-color: darkgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery Demonstration</h1>
+    <h2>
+      ● Append Content
+      <button id="appendButton">Append</button>
+    </h2>
+    <p id="existingParagraph">This is an existing paragraph.</p>
+    <ul id="existingList">
+      <li>Existing item</li>
+    </ul>
+
+    <h2>
+      ● Animate Element
+      <button id="animateButton">Animate Box</button>
+    </h2>
+    <div id="animateBox"></div>
+
+    <h2>
+      ● Change Color
+      <button id="colorChangeButton">Change Color</button>
+    </h2>
+    <div id="colorBox"></div>
+  </body>
+</html>

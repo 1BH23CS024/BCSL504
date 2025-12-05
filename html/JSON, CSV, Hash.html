@@ -1,0 +1,132 @@
+<html>
+  <head>
+    <title>JSON/CSV Converter and Hash Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+      const result = (id) => document.getElementById(id);
+
+      function convertJsonToObject() {
+        try {
+          const obj = JSON.parse(result("jsonInput").value);
+          result("jsonResult").innerText = JSON.stringify(obj, null, 2);
+        } catch (e) {
+          result("jsonResult").innerText = "Error: " + e.message;
+        }
+      }
+
+      function convertJsonToDate() {
+        try {
+          const obj = JSON.parse(result("jsonInput").value);
+          result("jsonResult").innerText = new Date(obj.date).toString();
+        } catch (e) {
+          result("jsonResult").innerText = "Error: " + e.message;
+        }
+      }
+
+      function convertJsonToCsv() {
+        try {
+          const arr = JSON.parse(result("jsonInput").value);
+          const headers = Object.keys(arr[0]);
+          const rows = arr.map((row) =>
+            headers.map((h) => JSON.stringify(row[h])).join(",")
+          );
+          result("jsonResult").innerText = [headers.join(","), ...rows].join(
+            "\n"
+          );
+        } catch (e) {
+          result("jsonResult").innerText = "Error: " + e.message;
+        }
+      }
+
+      function convertCsvToJson() {
+        try {
+          const lines = result("csvInput").value.split("\n");
+          const headers = lines[0].split(",");
+          const json = lines.slice(1).map((l) => {
+            const vals = l.split(",");
+            return headers.reduce((a, h, i) => ((a[h] = vals[i]), a), {});
+          });
+          result("csvResult").innerText = JSON.stringify(json, null, 2);
+        } catch (e) {
+          result("csvResult").innerText = "Error: " + e.message;
+        }
+      }
+
+      function createHash() {
+        try {
+          const input = result("stringInput").value;
+          result("hashResult").innerText = CryptoJS.SHA256(input).toString();
+        } catch (e) {
+          result("hashResult").innerText = "Error: " + e.message;
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+
+      .container {
+        border: 1px solid black;
+        margin: auto;
+        max-width: 800px;
+        padding: 20px;
+      }
+
+      .result {
+        margin-top: 10px;
+        font-family: monospace;
+      }
+
+      h1 {
+        text-align: center;
+        padding-bottom: 25px;
+      }
+
+      button {
+        background: green;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        margin-left: 10px;
+        padding: 10px 15px;
+      }
+      button:hover {
+        background: darkgreen;
+      }
+
+      textarea {
+        height: 100px;
+        width: 100%;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JSON/CSV Converter and Hash Generator</h1>
+      <h3>
+        Convert JSON to JavaScript Object / Date / CSV
+        <button onclick="convertJsonToObject()">JavaScript Object</button>
+        <button onclick="convertJsonToDate()">Date</button>
+        <button onclick="convertJsonToCsv()">CSV</button>
+      </h3>
+      <textarea id="jsonInput" placeholder="Enter JSON here"></textarea>
+      <div class="result" id="jsonResult"></div>
+      <h3>
+        Convert CSV to JSON
+        <button onclick="convertCsvToJson()">Convert</button>
+      </h3>
+      <textarea id="csvInput" placeholder="Enter CSV here"></textarea>
+      <div class="result" id="csvResult"></div>
+      <h3>
+        Generate SHA256 Hash from string
+        <button onclick="createHash()">Generate</button>
+      </h3>
+      <textarea id="stringInput" placeholder="Enter string here"></textarea>
+      <div class="result" id="hashResult"></div>
+    </div>
+  </body>
+</html>
