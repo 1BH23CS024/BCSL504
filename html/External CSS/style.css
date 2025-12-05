@@ -1,0 +1,57 @@
+body {
+  font-family: sans-serif;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+hr {
+  height: 5px;
+  background: blue;
+}
+
+div {
+  border: 1px solid black;
+  padding: 10px;
+  background: lightgrey;
+}
+
+span {
+  color: orange;
+  font-weight: bold;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: orange;
+}
+
+.note {
+  background: lightyellow;
+  padding: 10px;
+  border-left: 5px solid yellow;
+  font-weight: bold;
+}
+
+.class-select {
+  text-align: center;
+  color: gray;
+}
+
+#unique-paragraph {
+  color: purple;
+  background: lavender;
+  padding: 15px 20px;
+  border: 1px dashed purple;
+}
